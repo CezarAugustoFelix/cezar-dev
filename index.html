@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cezar Augusto Â· Dev</title>
+<meta name="description" content="Desenvolvedor em transiÃ§Ã£o: chatbot com IA em produÃ§Ã£o, front-end em React e automaÃ§Ãµes. Londrina, ParanÃ¡.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;500;700&family=Hanken+Grotesk:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+  :root{
+    --void:#08090B;
+    --surface:#101216;
+    --line:#1E2228;
+    --ink:#F4F5F7;
+    --muted:#979DA6;
+    --dim:#6B717A;
+    --crimson:#D8263C;
+    --crimson-dim:#8E1B29;
+
+    --f-display:"Outfit","Helvetica Neue",Arial,sans-serif;
+    --f-body:"Hanken Grotesk","Helvetica Neue",Arial,sans-serif;
+    --f-mono:"JetBrains Mono",ui-monospace,Menlo,monospace;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;overflow-x:hidden;}
+  body{
+    margin:0;background:var(--void);color:var(--ink);
+    font-family:var(--f-body);font-size:16px;line-height:1.65;font-weight:300;
+    -webkit-font-smoothing:antialiased;overflow-x:hidden;
+  }
+  #mesh{position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none;}
+  .glow{
+    position:fixed;z-index:0;pointer-events:none;border-radius:50%;filter:blur(90px);
+  }
+  .glow.a{width:70vw;height:70vw;right:-22vw;top:-14vw;
+    background:radial-gradient(circle,rgba(216,38,60,.30),rgba(216,38,60,0) 68%);}
+  .glow.b{width:60vw;height:60vw;left:-24vw;top:52vh;
+    background:radial-gradient(circle,rgba(142,27,41,.22),rgba(142,27,41,0) 70%);}
+  .shell{position:relative;z-index:1;}
+
+  .wrap{max-width:1180px;margin:0 auto;padding-inline:28px;}
+
+  /* ---------- nav ---------- */
+  nav{
+    position:sticky;top:0;z-index:20;backdrop-filter:blur(14px);
+    background:rgba(8,9,11,.72);border-bottom:1px solid rgba(255,255,255,.05);
+  }
+  .nav-in{display:flex;align-items:center;justify-content:space-between;
+    padding-block:18px;gap:20px;}
+  .mark{font-family:var(--f-display);font-weight:700;font-size:1.22rem;letter-spacing:-.02em;}
+  .mark i{color:var(--crimson);font-style:normal;}
+  .nav-links{display:flex;gap:26px;list-style:none;margin:0;padding:0;}
+  .nav-links a{
+    font-family:var(--f-mono);font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--muted);text-decoration:none;
+  }
+  .nav-links a:hover{color:var(--ink);}
+  @media (max-width:760px){ .nav-links{display:none;} }
+
+  .pill{
+    display:inline-flex;align-items:center;gap:10px;
+    font-family:var(--f-body);font-weight:400;font-size:.88rem;
+    color:var(--ink);text-decoration:none;
+    border:1px solid rgba(255,255,255,.28);border-radius:999px;
+    padding:11px 24px;white-space:nowrap;background:transparent;
+  }
+  .pill:hover{border-color:var(--crimson);color:var(--crimson);}
+  .pill.solid{background:var(--crimson);border-color:var(--crimson);}
+  .pill.solid:hover{background:transparent;color:var(--crimson);}
+
+  /* ---------- hero ---------- */
+  header.hero{padding-block:clamp(72px,13vh,130px) clamp(60px,10vh,104px);}
+  h1{
+    font-family:var(--f-display);font-weight:200;
+    font-size:clamp(2.9rem,8.6vw,6.6rem);line-height:.98;letter-spacing:-.035em;
+    margin:0;max-width:16ch;text-wrap:balance;
+  }
+  h1 b{font-weight:700;color:var(--crimson);}
+  .hero-grid > div{min-width:0;}
+  .hero-grid{
+    display:grid;grid-template-columns:1.25fr .75fr;gap:clamp(28px,5vw,70px);
+    align-items:end;margin-top:42px;
+  }
+  .hero-side p{margin:0 0 26px;color:var(--muted);max-width:40ch;}
+  .cue{
+    display:flex;align-items:center;gap:12px;margin-top:56px;
+    font-family:var(--f-mono);font-size:.66rem;letter-spacing:.2em;
+    text-transform:uppercase;color:var(--dim);
+  }
+  .cue svg{animation:bob 2.4s ease-in-out infinite;}
+  @keyframes bob{0%,100%{transform:translateY(0);}50%{transform:translateY(4px);}}
+  @media (prefers-reduced-motion: reduce){ .cue svg{animation:none;} }
+  @media (max-width:860px){ .hero-grid{grid-template-columns:1fr;align-items:start;} }
+
+  /* ---------- seÃ§Ãµes ---------- */
+  section{padding-block:clamp(64px,10vh,112px);}
+  .eyebrow{
+    font-family:var(--f-mono);font-size:.68rem;font-weight:500;letter-spacing:.24em;
+    text-transform:uppercase;color:var(--crimson);margin:0 0 26px;
+  }
+  h2{
+    font-family:var(--f-display);font-weight:200;
+    font-size:clamp(1.9rem,4.4vw,3.3rem);line-height:1.06;letter-spacing:-.028em;
+    margin:0;max-width:20ch;text-wrap:balance;
+  }
+  h2 b{font-weight:700;}
+  .two{display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,5vw,70px);align-items:start;}
+  .two > *{min-width:0;}
+  @media (max-width:860px){ .two{grid-template-columns:1fr;} }
+  .lede{font-size:clamp(1.05rem,1.5vw,1.3rem);color:var(--muted);margin:0 0 22px;max-width:48ch;}
+  .lede b{color:var(--ink);font-weight:500;}
+
+  /* ---------- nota IA ---------- */
+  .nota{
+    border:1px solid var(--line);border-left:2px solid var(--crimson);
+    background:linear-gradient(90deg,rgba(216,38,60,.07),rgba(216,38,60,0) 60%);
+    padding:clamp(24px,3.4vw,38px);border-radius:3px;
+  }
+  .nota p{margin:0;color:var(--muted);max-width:62ch;}
+  .nota p + p{margin-top:16px;}
+  .nota b{color:var(--ink);font-weight:500;}
+
+  /* ---------- projetos ---------- */
+  .proj{
+    display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);
+    gap:clamp(20px,4vw,60px);padding-block:clamp(34px,5vw,54px);
+    border-top:1px solid var(--line);
+  }
+  .proj > div{min-width:0;}
+  @media (max-width:860px){ .proj{grid-template-columns:1fr;gap:18px;} }
+  .proj h3{
+    font-family:var(--f-display);font-weight:300;font-size:clamp(1.5rem,2.7vw,2.1rem);
+    line-height:1.12;letter-spacing:-.022em;margin:0 0 16px;text-wrap:balance;
+  }
+  .chip{
+    display:inline-flex;align-items:center;gap:7px;
+    font-family:var(--f-mono);font-size:.63rem;font-weight:500;letter-spacing:.14em;
+    text-transform:uppercase;color:var(--muted);
+  }
+  .dot{width:6px;height:6px;border-radius:50%;background:var(--dim);}
+  .dot.live{background:#3FBF7F;box-shadow:0 0 10px rgba(63,191,127,.8);}
+  .dot.wip{background:#D9A441;}
+  .proj p{margin:0 0 16px;color:var(--muted);max-width:56ch;}
+  .proj p:last-child{margin-bottom:0;}
+  .stack{
+    font-family:var(--f-mono);font-size:.7rem;letter-spacing:.02em;color:var(--dim);
+    margin:0 0 20px;line-height:1.9;
+  }
+  .flow{
+    margin:0 0 18px;padding:14px 16px;border:1px solid var(--line);border-radius:3px;
+    background:var(--surface);font-family:var(--f-mono);font-size:.68rem;
+    color:var(--muted);overflow-x:auto;white-space:nowrap;
+  }
+  .flow b{color:var(--ink);font-weight:500;}
+  .flow i{color:var(--crimson);font-style:normal;}
+
+  /* ---------- stack grid ---------- */
+  .cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:34px;margin-top:44px;}
+  .cols h4{
+    font-family:var(--f-mono);font-size:.66rem;font-weight:500;letter-spacing:.18em;
+    text-transform:uppercase;color:var(--crimson);margin:0 0 14px;
+  }
+  .cols ul{margin:0;padding:0;list-style:none;color:var(--muted);font-size:.95rem;}
+  .cols li{padding:4px 0;border-bottom:1px solid rgba(255,255,255,.04);}
+
+  /* ---------- registros ---------- */
+  .rec{
+    display:flex;flex-wrap:wrap;gap:8px 26px;justify-content:space-between;align-items:baseline;
+    padding-block:20px;border-top:1px solid var(--line);
+  }
+  .rec-main{flex:1 1 320px;}
+  .rec-main strong{
+    display:block;font-family:var(--f-display);font-weight:500;font-size:1.08rem;
+    letter-spacing:-.01em;color:var(--ink);margin-bottom:3px;
+  }
+  .rec-main span{color:var(--muted);font-size:.93rem;}
+  .rec-when{
+    font-family:var(--f-mono);font-size:.68rem;letter-spacing:.08em;color:var(--dim);
+    white-space:nowrap;font-variant-numeric:tabular-nums;
+  }
+  .rec-note{flex-basis:100%;margin:10px 0 0;color:var(--muted);font-size:.93rem;max-width:62ch;}
+
+  /* ---------- contato ---------- */
+  .contato{text-align:center;padding-block:clamp(80px,13vh,140px);}
+  .contato h2{margin-inline:auto;max-width:14ch;}
+  .acoes{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-top:40px;}
+
+  footer{
+    border-top:1px solid var(--line);padding-block:26px;
+    display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;
+    font-family:var(--f-mono);font-size:.66rem;letter-spacing:.1em;
+    text-transform:uppercase;color:var(--dim);
+  }
+  footer a{color:var(--dim);text-decoration:none;}
+  footer a:hover{color:var(--crimson);}
+  a:focus-visible{outline:2px solid var(--crimson);outline-offset:3px;}
+</style>
+</head>
+<body>
+
+<canvas id="mesh" aria-hidden="true"></canvas>
+<div class="glow a" aria-hidden="true"></div>
+<div class="glow b" aria-hidden="true"></div>
+
+<div class="shell">
+
+<nav>
+  <div class="wrap nav-in">
+    <span class="mark">Cezar<i>.</i></span>
+    <ul class="nav-links">
+      <li><a href="#trabalho">Como trabalho</a></li>
+      <li><a href="#projetos">Projetos</a></li>
+      <li><a href="#stack">Stack</a></li>
+      <li><a href="#formacao">FormaÃ§Ã£o</a></li>
+    </ul>
+    <a class="pill" href="#contato">Falar comigo</a>
+  </div>
+</nav>
+
+<header class="hero wrap">
+  <h1>Eu construo o que <b>vai para o ar.</b></h1>
+  <div class="hero-grid">
+    <div>
+      <div class="cue">
+        Role para ver
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+          <path d="M7 1v11M2.5 7.5L7 12l4.5-4.5" stroke="#6B717A" stroke-width="1.2"/>
+        </svg>
+      </div>
+    </div>
+    <div class="hero-side">
+      <p>
+        Formado em AnÃ¡lise e Desenvolvimento de Sistemas, em transiÃ§Ã£o depois de mais de
+        15 anos produzindo vÃ­deo e design. Hoje tenho um atendimento automatizado rodando
+        numa VPS que eu mantenho e interfaces em React publicadas. Procuro estÃ¡gio ou vaga
+        jÃºnior.
+      </p>
+      <a class="pill solid" href="#projetos">Ver os projetos</a>
+    </div>
+  </div>
+</header>
+
+<section id="trabalho" class="wrap">
+  <p class="eyebrow">Como eu trabalho</p>
+  <div class="two">
+    <h2>Uso <b>IA</b> como par de programaÃ§Ã£o. EstÃ¡ tudo aqui, sem asterisco.</h2>
+    <div class="nota">
+      <p>
+        Todo projeto desta pÃ¡gina foi construÃ­do com <b>Claude e Gemini</b> escrevendo cÃ³digo
+        ao meu lado. Prefiro dizer isso na porta de entrada a ser perguntado depois.
+      </p>
+      <p>
+        O que Ã© meu: escolher o problema, desenhar a arquitetura, decidir a stack,
+        provisionar e manter a infraestrutura, achar o bug quando quebra em produÃ§Ã£o
+        e entender cada parte bem o suficiente para explicar numa conversa.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section id="projetos" class="wrap">
+  <p class="eyebrow">Projetos</p>
+  <h2>Quatro coisas que eu <b>coloquei de pÃ©</b>.</h2>
+
+  <article class="proj" style="margin-top:46px;">
+    <div>
+      <span class="chip"><span class="dot live"></span> Em produÃ§Ã£o</span>
+      <h3>Atendimento automatizado no WhatsApp</h3>
+      <p class="stack">n8n Â· Evolution API Â· PostgreSQL Â· Docker Compose Â· Nginx Â· VPS Linux Â· LLM</p>
+    </div>
+    <div>
+      <p>
+        Backend de atendimento para um escritÃ³rio contÃ¡bil. Um agente conversacional conduz
+        a conversa em linguagem natural, coleta o CNPJ, consulta os dados cadastrais na
+        BrasilAPI, confirma com a pessoa e registra no banco, notificando o contador. As
+        conversas aparecem num kanban por status, e o bot se cala sozinho assim que um
+        atendente humano assume o contato.
+      </p>
+      <div class="flow">
+        WhatsApp <i>â†’</i> <b>Evolution API</b> <i>â†’</i> webhook <i>â†’</i> <b>n8n</b> <i>â†’</i> agente LLM <i>â†’</i> <b>BrasilAPI</b> <i>â†’</i> <b>PostgreSQL</b> <i>â†’</i> contador
+      </div>
+      <p>
+        A VPS foi provisionada e Ã© mantida por mim: Docker Compose, proxy reverso com Nginx,
+        acesso por chave SSH. Dois bugs que derrubaram o bot em produÃ§Ã£o, uma credencial
+        apontando para o banco errado e uma tabela de log que nÃ£o existia, foram
+        diagnosticados e corrigidos com o sistema no ar.
+      </p>
+    </div>
+  </article>
+
+  <article class="proj">
+    <div>
+      <span class="chip"><span class="dot live"></span> Publicado</span>
+      <h3>PortfÃ³lio visual</h3>
+      <p class="stack">React 19 Â· TypeScript Â· Vite Â· Tailwind CSS Â· Motion Â· Vercel</p>
+    </div>
+    <div>
+      <p>
+        Site autoral do meu trabalho de design e vÃ­deo, com galeria em scroll horizontal
+        controlada por progresso de rolagem. Versionado no GitHub, com deploy contÃ­nuo na
+        Vercel a cada push.
+      </p>
+      <a class="pill" href="https://cezar-augusto.vercel.app">cezar-augusto.vercel.app</a>
+    </div>
+  </article>
+
+  <article class="proj">
+    <div>
+      <span class="chip"><span class="dot wip"></span> ProtÃ³tipo</span>
+      <h3>LÃ©u: clima e rotas para quem pedala e corre</h3>
+      <p class="stack">Next.js Â· Supabase Â· OAuth Â· API Open-Meteo</p>
+    </div>
+    <div>
+      <p>
+        Cruza a rota com a previsÃ£o do tempo em tempo real (vento, temperatura e chuva) e
+        deixa a comunidade avaliar rotas. A integraÃ§Ã£o com o Strava usa OAuth com rota de
+        callback no backend e variÃ¡veis de ambiente, para as credenciais nunca chegarem ao
+        cliente.
+      </p>
+    </div>
+  </article>
+
+  <article class="proj">
+    <div>
+      <span class="chip"><span class="dot"></span> Em desenvolvimento</span>
+      <h3>Cutway: extensÃ£o para o Premiere Pro</h3>
+      <p class="stack">UXP Â· JavaScript Â· processamento local</p>
+    </div>
+    <div>
+      <p>
+        Painel dentro do Premiere que detecta silÃªncios na fala e corta sozinho, eliminando
+        a etapa mais repetitiva da ediÃ§Ã£o. Escolhi processamento local em vez de API paga,
+        para a ferramenta rodar sem custo por minuto de vÃ­deo. Nasceu de uma dor do meu
+        prÃ³prio fluxo de trabalho.
+      </p>
+    </div>
+  </article>
+</section>
+
+<section id="stack" class="wrap">
+  <p class="eyebrow">Stack</p>
+  <h2>O que eu uso <b>de verdade</b> nos projetos acima.</h2>
+  <div class="cols">
+    <div>
+      <h4>Linguagens</h4>
+      <ul><li>JavaScript</li><li>TypeScript</li><li>C#</li><li>HTML5 e CSS3</li></ul>
+    </div>
+    <div>
+      <h4>Front-end</h4>
+      <ul><li>React</li><li>Next.js</li><li>Tailwind CSS</li><li>Vite</li></ul>
+    </div>
+    <div>
+      <h4>Dados e integraÃ§Ãµes</h4>
+      <ul><li>PostgreSQL</li><li>Supabase</li><li>APIs REST</li><li>n8n</li><li>IntegraÃ§Ã£o de LLMs</li></ul>
+    </div>
+    <div>
+      <h4>Infra</h4>
+      <ul><li>Linux em VPS</li><li>Docker Compose</li><li>Nginx</li><li>Git e GitHub</li><li>Vercel</li></ul>
+    </div>
+  </div>
+</section>
+
+<section id="formacao" class="wrap">
+  <p class="eyebrow">FormaÃ§Ã£o</p>
+  <h2>Base formal, e <b>muita hora</b> de estudo.</h2>
+  <div style="margin-top:44px;">
+    <div class="rec">
+      <div class="rec-main">
+        <strong>AnÃ¡lise e Desenvolvimento de Sistemas</strong>
+        <span>UNICIVE, Centro UniversitÃ¡rio Cidade Verde</span>
+      </div>
+      <span class="rec-when">2020 â€“ 2023</span>
+    </div>
+    <div class="rec">
+      <div class="rec-main">
+        <strong>26 certificados na DIO</strong>
+        <span>Bootcamps GFT Start #3 e #4 .NET, Localiza Labs .NET Developer, Impulso Fullstack Web Developer, Cognizant Cloud Data Engineer</span>
+      </div>
+      <span class="rec-when">2021 â€“ 2023</span>
+      <p class="rec-note">
+        LÃ³gica de programaÃ§Ã£o, orientaÃ§Ã£o a objetos com C#, estrutura de dados e algoritmos,
+        ecossistema .NET, .NET MAUI, APIs e mÃ©todos HTTP, Git e GitHub, projetos Ã¡geis com SCRUM.
+      </p>
+    </div>
+    <div class="rec">
+      <div class="rec-main">
+        <strong>Curso FullStack b7web</strong>
+        <span>TÃ©cnico em InformÃ¡tica (formaÃ§Ã£o anterior)</span>
+      </div>
+      <span class="rec-when">em andamento</span>
+    </div>
+  </div>
+</section>
+
+<section class="wrap">
+  <p class="eyebrow">De onde eu venho</p>
+  <div class="two">
+    <h2>Quinze anos <b>entregando no prazo</b> antes de escrever a primeira linha.</h2>
+    <div>
+      <p class="lede">
+        Audiovisual e design me deram prazo, cliente, olho para interface e o hÃ¡bito de
+        automatizar o prÃ³prio trabalho. Foi esse hÃ¡bito, no fim, que me trouxe para cÃ¡.
+      </p>
+    </div>
+  </div>
+  <div style="margin-top:36px;">
+    <div class="rec">
+      <div class="rec-main">
+        <strong>Produtor de VÃ­deo</strong>
+        <span>Drako Academia, Londrina/PR</span>
+      </div>
+      <span class="rec-when">abr/2026 â€“ atual</span>
+    </div>
+    <div class="rec">
+      <div class="rec-main">
+        <strong>Designer GrÃ¡fico</strong>
+        <span>OP7 | Franchising â†’ Bihmark Marketing, Londrina/PR</span>
+      </div>
+      <span class="rec-when">jul/2025 â€“ abr/2026</span>
+    </div>
+    <div class="rec">
+      <div class="rec-main">
+        <strong>Videomaker e FotÃ³grafo</strong>
+        <span>For You Fotografia, autÃ´nomo</span>
+      </div>
+      <span class="rec-when">set/2016 â€“ atual</span>
+    </div>
+    <div class="rec">
+      <div class="rec-main">
+        <strong>Videomaker, assessoria de imprensa</strong>
+        <span>Prefeitura de RolÃ¢ndia</span>
+      </div>
+      <span class="rec-when">abr/2022 â€“ nov/2024</span>
+    </div>
+  </div>
+</section>
+
+<section id="contato" class="wrap contato">
+  <p class="eyebrow">Contato</p>
+  <h2>Vamos <b>conversar</b>.</h2>
+  <div class="acoes">
+    <a class="pill solid" href="mailto:cezaraugustofelix90@gmail.com">E-mail</a>
+    <a class="pill" href="https://wa.me/5543999859044">WhatsApp</a>
+    <a class="pill" href="https://github.com/CezarAugustoFelix">GitHub</a>
+    <a class="pill" href="https://linkedin.com/in/cezaraugustofelix">LinkedIn</a>
+    <a class="pill" href="cv-desenvolvimento.pdf">CurrÃ­culo (PDF)</a>
+  </div>
+</section>
+
+<div class="wrap">
+  <footer>
+    <span>Londrina, ParanÃ¡</span>
+    <span><a href="mailto:cezaraugustofelix90@gmail.com">cezaraugustofelix90@gmail.com</a></span>
+  </footer>
+</div>
+
+</div>
+
+<script>
+(function(){
+  var c = document.getElementById('mesh'), x = c.getContext('2d');
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var pts = [], W = 0, H = 0;
+
+  function build(){
+    W = c.width = window.innerWidth * devicePixelRatio;
+    H = c.height = window.innerHeight * devicePixelRatio;
+    c.style.width = window.innerWidth + 'px';
+    c.style.height = window.innerHeight + 'px';
+    var gap = Math.max(W, H) / 9;
+    pts = [];
+    for (var gy = -1; gy * gap < H + gap; gy++){
+      for (var gx = -1; gx * gap < W + gap; gx++){
+        pts.push({
+          bx: gx * gap + (Math.random() - .5) * gap * .7,
+          by: gy * gap + (Math.random() - .5) * gap * .7,
+          p: Math.random() * Math.PI * 2,
+          a: gap * .16
+        });
+      }
+    }
+  }
+
+  function frame(t){
+    x.clearRect(0, 0, W, H);
+    var i, j, a, b, d, gap = Math.max(W, H) / 9, max = gap * 1.35;
+    for (i = 0; i < pts.length; i++){
+      a = pts[i];
+      a.x = a.bx + Math.cos(t / 5200 + a.p) * a.a;
+      a.y = a.by + Math.sin(t / 6100 + a.p) * a.a;
+    }
+    x.lineWidth = devicePixelRatio;
+    for (i = 0; i < pts.length; i++){
+      a = pts[i];
+      for (j = i + 1; j < pts.length; j++){
+        b = pts[j];
+        d = Math.hypot(a.x - b.x, a.y - b.y);
+        if (d < max){
+          var near = 1 - d / max;
+          x.strokeStyle = 'rgba(150,160,175,' + (near * .07).toFixed(3) + ')';
+          x.beginPath(); x.moveTo(a.x, a.y); x.lineTo(b.x, b.y); x.stroke();
+        }
+      }
+    }
+    for (i = 0; i < pts.length; i++){
+      a = pts[i];
+      x.fillStyle = 'rgba(200,210,225,.10)';
+      x.beginPath(); x.arc(a.x, a.y, 1.6 * devicePixelRatio, 0, 6.29); x.fill();
+    }
+  }
+
+  function loop(t){ frame(t); requestAnimationFrame(loop); }
+
+  build();
+  if (reduce) { frame(0); } else { requestAnimationFrame(loop); }
+  var rt;
+  window.addEventListener('resize', function(){
+    clearTimeout(rt);
+    rt = setTimeout(function(){ build(); if (reduce) frame(0); }, 180);
+  });
+})();
+</script>
+</body>
+</html>

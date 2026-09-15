@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Cezar Augusto Â· Dev</title>
-<meta name="description" content="Desenvolvedor em transiÃ§Ã£o: chatbot com IA em produÃ§Ã£o, front-end em React e automaÃ§Ãµes. Londrina, ParanÃ¡.">
+<title>Cezar Augusto · Dev</title>
+<meta name="description" content="Desenvolvedor em transição: chatbot com IA em produção, front-end em React e automações. Londrina, Paraná.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;500;700&family=Hanken+Grotesk:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap">
@@ -94,7 +94,7 @@
   @media (prefers-reduced-motion: reduce){ .cue svg{animation:none;} }
   @media (max-width:860px){ .hero-grid{grid-template-columns:1fr;align-items:start;} }
 
-  /* ---------- seÃ§Ãµes ---------- */
+  /* ---------- seções ---------- */
   section{padding-block:clamp(64px,10vh,112px);}
   .eyebrow{
     font-family:var(--f-mono);font-size:.68rem;font-weight:500;letter-spacing:.24em;
@@ -213,7 +213,7 @@
       <li><a href="#trabalho">Como trabalho</a></li>
       <li><a href="#projetos">Projetos</a></li>
       <li><a href="#stack">Stack</a></li>
-      <li><a href="#formacao">FormaÃ§Ã£o</a></li>
+      <li><a href="#formacao">Formação</a></li>
     </ul>
     <a class="pill" href="#contato">Falar comigo</a>
   </div>
@@ -232,10 +232,10 @@
     </div>
     <div class="hero-side">
       <p>
-        Formado em AnÃ¡lise e Desenvolvimento de Sistemas, em transiÃ§Ã£o depois de mais de
-        15 anos produzindo vÃ­deo e design. Hoje tenho um atendimento automatizado rodando
-        numa VPS que eu mantenho e interfaces em React publicadas. Procuro estÃ¡gio ou vaga
-        jÃºnior.
+        Formado em Análise e Desenvolvimento de Sistemas, em transição depois de mais de
+        15 anos produzindo vídeo e design. Hoje tenho um atendimento automatizado rodando
+        numa VPS que eu mantenho e interfaces em React publicadas. Procuro estágio ou vaga
+        júnior.
       </p>
       <a class="pill solid" href="#projetos">Ver os projetos</a>
     </div>
@@ -245,15 +245,15 @@
 <section id="trabalho" class="wrap">
   <p class="eyebrow">Como eu trabalho</p>
   <div class="two">
-    <h2>Uso <b>IA</b> como par de programaÃ§Ã£o. EstÃ¡ tudo aqui, sem asterisco.</h2>
+    <h2>Uso <b>IA</b> como par de programação. Está tudo aqui, sem asterisco.</h2>
     <div class="nota">
       <p>
-        Todo projeto desta pÃ¡gina foi construÃ­do com <b>Claude e Gemini</b> escrevendo cÃ³digo
+        Todo projeto desta página foi construído com <b>Claude e Gemini</b> escrevendo código
         ao meu lado. Prefiro dizer isso na porta de entrada a ser perguntado depois.
       </p>
       <p>
-        O que Ã© meu: escolher o problema, desenhar a arquitetura, decidir a stack,
-        provisionar e manter a infraestrutura, achar o bug quando quebra em produÃ§Ã£o
+        O que é meu: escolher o problema, desenhar a arquitetura, decidir a stack,
+        provisionar e manter a infraestrutura, achar o bug quando quebra em produção
         e entender cada parte bem o suficiente para explicar numa conversa.
       </p>
     </div>
@@ -262,29 +262,29 @@
 
 <section id="projetos" class="wrap">
   <p class="eyebrow">Projetos</p>
-  <h2>Quatro coisas que eu <b>coloquei de pÃ©</b>.</h2>
+  <h2>Quatro coisas que eu <b>coloquei de pé</b>.</h2>
 
   <article class="proj" style="margin-top:46px;">
     <div>
-      <span class="chip"><span class="dot live"></span> Em produÃ§Ã£o</span>
+      <span class="chip"><span class="dot live"></span> Em produção</span>
       <h3>Atendimento automatizado no WhatsApp</h3>
-      <p class="stack">n8n Â· Evolution API Â· PostgreSQL Â· Docker Compose Â· Nginx Â· VPS Linux Â· LLM</p>
+      <p class="stack">n8n · Evolution API · PostgreSQL · Docker Compose · Nginx · VPS Linux · LLM</p>
     </div>
     <div>
       <p>
-        Backend de atendimento para um escritÃ³rio contÃ¡bil. Um agente conversacional conduz
+        Backend de atendimento para um escritório contábil. Um agente conversacional conduz
         a conversa em linguagem natural, coleta o CNPJ, consulta os dados cadastrais na
         BrasilAPI, confirma com a pessoa e registra no banco, notificando o contador. As
         conversas aparecem num kanban por status, e o bot se cala sozinho assim que um
         atendente humano assume o contato.
       </p>
       <div class="flow">
-        WhatsApp <i>â†’</i> <b>Evolution API</b> <i>â†’</i> webhook <i>â†’</i> <b>n8n</b> <i>â†’</i> agente LLM <i>â†’</i> <b>BrasilAPI</b> <i>â†’</i> <b>PostgreSQL</b> <i>â†’</i> contador
+        WhatsApp <i>→</i> <b>Evolution API</b> <i>→</i> webhook <i>→</i> <b>n8n</b> <i>→</i> agente LLM <i>→</i> <b>BrasilAPI</b> <i>→</i> <b>PostgreSQL</b> <i>→</i> contador
       </div>
       <p>
-        A VPS foi provisionada e Ã© mantida por mim: Docker Compose, proxy reverso com Nginx,
-        acesso por chave SSH. Dois bugs que derrubaram o bot em produÃ§Ã£o, uma credencial
-        apontando para o banco errado e uma tabela de log que nÃ£o existia, foram
+        A VPS foi provisionada e é mantida por mim: Docker Compose, proxy reverso com Nginx,
+        acesso por chave SSH. Dois bugs que derrubaram o bot em produção, uma credencial
+        apontando para o banco errado e uma tabela de log que não existia, foram
         diagnosticados e corrigidos com o sistema no ar.
       </p>
     </div>
@@ -293,13 +293,13 @@
   <article class="proj">
     <div>
       <span class="chip"><span class="dot live"></span> Publicado</span>
-      <h3>PortfÃ³lio visual</h3>
-      <p class="stack">React 19 Â· TypeScript Â· Vite Â· Tailwind CSS Â· Motion Â· Vercel</p>
+      <h3>Portfólio visual</h3>
+      <p class="stack">React 19 · TypeScript · Vite · Tailwind CSS · Motion · Vercel</p>
     </div>
     <div>
       <p>
-        Site autoral do meu trabalho de design e vÃ­deo, com galeria em scroll horizontal
-        controlada por progresso de rolagem. Versionado no GitHub, com deploy contÃ­nuo na
+        Site autoral do meu trabalho de design e vídeo, com galeria em scroll horizontal
+        controlada por progresso de rolagem. Versionado no GitHub, com deploy contínuo na
         Vercel a cada push.
       </p>
       <a class="pill" href="https://cezar-augusto.vercel.app">cezar-augusto.vercel.app</a>
@@ -308,15 +308,15 @@
 
   <article class="proj">
     <div>
-      <span class="chip"><span class="dot wip"></span> ProtÃ³tipo</span>
-      <h3>LÃ©u: clima e rotas para quem pedala e corre</h3>
-      <p class="stack">Next.js Â· Supabase Â· OAuth Â· API Open-Meteo</p>
+      <span class="chip"><span class="dot wip"></span> Protótipo</span>
+      <h3>Léu: clima e rotas para quem pedala e corre</h3>
+      <p class="stack">Next.js · Supabase · OAuth · API Open-Meteo</p>
     </div>
     <div>
       <p>
-        Cruza a rota com a previsÃ£o do tempo em tempo real (vento, temperatura e chuva) e
-        deixa a comunidade avaliar rotas. A integraÃ§Ã£o com o Strava usa OAuth com rota de
-        callback no backend e variÃ¡veis de ambiente, para as credenciais nunca chegarem ao
+        Cruza a rota com a previsão do tempo em tempo real (vento, temperatura e chuva) e
+        deixa a comunidade avaliar rotas. A integração com o Strava usa OAuth com rota de
+        callback no backend e variáveis de ambiente, para as credenciais nunca chegarem ao
         cliente.
       </p>
     </div>
@@ -325,15 +325,15 @@
   <article class="proj">
     <div>
       <span class="chip"><span class="dot"></span> Em desenvolvimento</span>
-      <h3>Cutway: extensÃ£o para o Premiere Pro</h3>
-      <p class="stack">UXP Â· JavaScript Â· processamento local</p>
+      <h3>Cutway: extensão para o Premiere Pro</h3>
+      <p class="stack">UXP · JavaScript · processamento local</p>
     </div>
     <div>
       <p>
-        Painel dentro do Premiere que detecta silÃªncios na fala e corta sozinho, eliminando
-        a etapa mais repetitiva da ediÃ§Ã£o. Escolhi processamento local em vez de API paga,
-        para a ferramenta rodar sem custo por minuto de vÃ­deo. Nasceu de uma dor do meu
-        prÃ³prio fluxo de trabalho.
+        Painel dentro do Premiere que detecta silêncios na fala e corta sozinho, eliminando
+        a etapa mais repetitiva da edição. Escolhi processamento local em vez de API paga,
+        para a ferramenta rodar sem custo por minuto de vídeo. Nasceu de uma dor do meu
+        próprio fluxo de trabalho.
       </p>
     </div>
   </article>
@@ -352,8 +352,8 @@
       <ul><li>React</li><li>Next.js</li><li>Tailwind CSS</li><li>Vite</li></ul>
     </div>
     <div>
-      <h4>Dados e integraÃ§Ãµes</h4>
-      <ul><li>PostgreSQL</li><li>Supabase</li><li>APIs REST</li><li>n8n</li><li>IntegraÃ§Ã£o de LLMs</li></ul>
+      <h4>Dados e integrações</h4>
+      <ul><li>PostgreSQL</li><li>Supabase</li><li>APIs REST</li><li>n8n</li><li>Integração de LLMs</li></ul>
     </div>
     <div>
       <h4>Infra</h4>
@@ -363,31 +363,31 @@
 </section>
 
 <section id="formacao" class="wrap">
-  <p class="eyebrow">FormaÃ§Ã£o</p>
+  <p class="eyebrow">Formação</p>
   <h2>Base formal, e <b>muita hora</b> de estudo.</h2>
   <div style="margin-top:44px;">
     <div class="rec">
       <div class="rec-main">
-        <strong>AnÃ¡lise e Desenvolvimento de Sistemas</strong>
-        <span>UNICIVE, Centro UniversitÃ¡rio Cidade Verde</span>
+        <strong>Análise e Desenvolvimento de Sistemas</strong>
+        <span>UNICIVE, Centro Universitário Cidade Verde</span>
       </div>
-      <span class="rec-when">2020 â€“ 2023</span>
+      <span class="rec-when">2020 – 2023</span>
     </div>
     <div class="rec">
       <div class="rec-main">
         <strong>26 certificados na DIO</strong>
         <span>Bootcamps GFT Start #3 e #4 .NET, Localiza Labs .NET Developer, Impulso Fullstack Web Developer, Cognizant Cloud Data Engineer</span>
       </div>
-      <span class="rec-when">2021 â€“ 2023</span>
+      <span class="rec-when">2021 – 2023</span>
       <p class="rec-note">
-        LÃ³gica de programaÃ§Ã£o, orientaÃ§Ã£o a objetos com C#, estrutura de dados e algoritmos,
-        ecossistema .NET, .NET MAUI, APIs e mÃ©todos HTTP, Git e GitHub, projetos Ã¡geis com SCRUM.
+        Lógica de programação, orientação a objetos com C#, estrutura de dados e algoritmos,
+        ecossistema .NET, .NET MAUI, APIs e métodos HTTP, Git e GitHub, projetos ágeis com SCRUM.
       </p>
     </div>
     <div class="rec">
       <div class="rec-main">
         <strong>Curso FullStack b7web</strong>
-        <span>TÃ©cnico em InformÃ¡tica (formaÃ§Ã£o anterior)</span>
+        <span>Técnico em Informática (formação anterior)</span>
       </div>
       <span class="rec-when">em andamento</span>
     </div>
@@ -400,39 +400,39 @@
     <h2>Quinze anos <b>entregando no prazo</b> antes de escrever a primeira linha.</h2>
     <div>
       <p class="lede">
-        Audiovisual e design me deram prazo, cliente, olho para interface e o hÃ¡bito de
-        automatizar o prÃ³prio trabalho. Foi esse hÃ¡bito, no fim, que me trouxe para cÃ¡.
+        Audiovisual e design me deram prazo, cliente, olho para interface e o hábito de
+        automatizar o próprio trabalho. Foi esse hábito, no fim, que me trouxe para cá.
       </p>
     </div>
   </div>
   <div style="margin-top:36px;">
     <div class="rec">
       <div class="rec-main">
-        <strong>Produtor de VÃ­deo</strong>
+        <strong>Produtor de Vídeo</strong>
         <span>Drako Academia, Londrina/PR</span>
       </div>
-      <span class="rec-when">abr/2026 â€“ atual</span>
+      <span class="rec-when">abr/2026 – atual</span>
     </div>
     <div class="rec">
       <div class="rec-main">
-        <strong>Designer GrÃ¡fico</strong>
-        <span>OP7 | Franchising â†’ Bihmark Marketing, Londrina/PR</span>
+        <strong>Designer Gráfico</strong>
+        <span>OP7 | Franchising → Bihmark Marketing, Londrina/PR</span>
       </div>
-      <span class="rec-when">jul/2025 â€“ abr/2026</span>
+      <span class="rec-when">jul/2025 – abr/2026</span>
     </div>
     <div class="rec">
       <div class="rec-main">
-        <strong>Videomaker e FotÃ³grafo</strong>
-        <span>For You Fotografia, autÃ´nomo</span>
+        <strong>Videomaker e Fotógrafo</strong>
+        <span>For You Fotografia, autônomo</span>
       </div>
-      <span class="rec-when">set/2016 â€“ atual</span>
+      <span class="rec-when">set/2016 – atual</span>
     </div>
     <div class="rec">
       <div class="rec-main">
         <strong>Videomaker, assessoria de imprensa</strong>
-        <span>Prefeitura de RolÃ¢ndia</span>
+        <span>Prefeitura de Rolândia</span>
       </div>
-      <span class="rec-when">abr/2022 â€“ nov/2024</span>
+      <span class="rec-when">abr/2022 – nov/2024</span>
     </div>
   </div>
 </section>
@@ -445,13 +445,13 @@
     <a class="pill" href="https://wa.me/5543999859044">WhatsApp</a>
     <a class="pill" href="https://github.com/CezarAugustoFelix">GitHub</a>
     <a class="pill" href="https://linkedin.com/in/cezaraugustofelix">LinkedIn</a>
-    <a class="pill" href="cv-desenvolvimento.pdf">CurrÃ­culo (PDF)</a>
+    <a class="pill" href="cv-desenvolvimento.pdf">Currículo (PDF)</a>
   </div>
 </section>
 
 <div class="wrap">
   <footer>
-    <span>Londrina, ParanÃ¡</span>
+    <span>Londrina, Paraná</span>
     <span><a href="mailto:cezaraugustofelix90@gmail.com">cezaraugustofelix90@gmail.com</a></span>
   </footer>
 </div>
